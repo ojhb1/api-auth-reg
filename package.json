@@ -4,6 +4,7 @@
   "description": "Guia 6 de la asignatura SD",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,6 +25,10 @@
   },
   "homepage": "https://github.com/ojhb1/api-auth-reg#readme",
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }

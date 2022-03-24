@@ -1,8 +1,11 @@
 'use strict'
 var http = require('http');
-const port = process.env.PORT || 8888;
+const port = process.env.PORT || 3000;
 const express = require('express');
+const logger = require('morgan');
 const app = express();
+
+app.use(logger('dev')); 
 
 http.createServer( (request, response) => {
 response.writeHead(200, {'Content-Type': 'text/plain'});

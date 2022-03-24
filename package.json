@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/ojhb1/api-auth-reg/issues"
   },
-  "homepage": "https://github.com/ojhb1/api-auth-reg#readme"
+  "homepage": "https://github.com/ojhb1/api-auth-reg#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
 }

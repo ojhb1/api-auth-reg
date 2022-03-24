@@ -1,0 +1,26 @@
+{
+  "name": "guia-6",
+  "version": "1.0.0",
+  "description": "Guia 6 de la asignatura SD",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ojhb1/api-auth-reg.git"
+  },
+  "keywords": [
+    "CRUD",
+    "REST",
+    "node",
+    "express",
+    "mongo"
+  ],
+  "author": "Omar Hsiba Busquets",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ojhb1/api-auth-reg/issues"
+  },
+  "homepage": "https://github.com/ojhb1/api-auth-reg#readme"
+}

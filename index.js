@@ -81,7 +81,7 @@ app.get('/api/user', (req, res, next) => {
     });
 });
 */
-app.get('/api/user', (req, res, next) => {
+app.get('/api/user' ,auth,(req, res, next) => {
     db.user.find((err, user) => {   
         if (err) return next(err);           
         res.json(user);
@@ -89,14 +89,14 @@ app.get('/api/user', (req, res, next) => {
 });
    
 
-app.get('/api/user/:id', (req, res, next) => {
+app.get('/api/user/:id', auth, (req, res, next) => {
     db.user.findOne({_id: id(req.params.id)}, (err, usuario) => {
         if (err) return next(err);
         res.json(usuario); //Para sacar un elemento concreto
     });
 });
 
-app.post('/api/user', (req, res, next) => {
+app.post('/api/user', auth, (req, res, next) => {
     const usuario = req.body;
     if (!usuario.nombre) {
         res.status(400).json ({
@@ -124,7 +124,7 @@ app.post('/api/user', (req, res, next) => {
     }
 });
 
-app.put('/api/user/:id', (req, res, next) => {        
+app.put('/api/user/:id', auth, (req, res, next) => {        
     let elementoId = req.params.id;        
     let elementoNuevo = req.body;          
     db.user.update({_id: id(elementoId)},  
@@ -136,7 +136,7 @@ app.put('/api/user/:id', (req, res, next) => {
     });
 });
 
-app.delete('/api/user/:id', (req, res, next) => {
+app.delete('/api/user/:id', auth, (req, res, next) => {
     let elementoId = req.params.id;
 
     db.user.remove({_id: id(elementoId)}, (err, resultado) => {
@@ -145,14 +145,14 @@ app.delete('/api/user/:id', (req, res, next) => {
     });
 });
 
-app.delete('/api/borrar/', (req, res, next) => {
+app.delete('/api/borrar/', auth, (req, res, next) => {
     db.comida.drop((err, resultado) => {
         if (err) return next(err);
         res.json(resultado);
     });
 });
 
-app.get('/api/auth', (req, res, next) => {
+app.get('/api/auth', auth, (req, res, next) => {
     db.user.find({lastLogin:{$exists: true}}, (err, user) => {  
         if (err) return next(err);         
         res.json(user);
@@ -161,7 +161,7 @@ app.get('/api/auth', (req, res, next) => {
    
 app.get('/api/auth/me', auth, (req, res, next) => {
   
-    db.user.findOne({email : req.email}, (err, usuario) => {
+    db.user.findOne({_id : id(req.user.id)}, (err, usuario) => {
         if (err) return next(err);
         res.json(usuario); //Para sacar un elemento concreto
     });
